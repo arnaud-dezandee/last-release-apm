@@ -13,6 +13,27 @@
 [![ESLint][standard-image]][standard-url]
 [![Commitizen friendly][commitizen-image]][commitizen-url]
 
+## Install and configure
+
+```bash
+$ npm install --save-dev last-release-apm
+```
+
+Add the following to the `package.json`
+
+```json
+"release": {
+  "getLastRelease": "last-release-apm"
+}
+```
+
+This tells [semantic-release plugins](https://github.com/semantic-release/semantic-release#plugins)
+to use this package to fetch the latest version from [Atom registry](https://atom.io/packages).
+
+## MIT License
+
+Copyright (c) 2016 Arnaud Dezandee
+
 [npm-image]: https://img.shields.io/npm/v/last-release-apm.svg?style=flat
 [npm-url]: https://www.npmjs.com/package/last-release-apm
 [travis-image]: https://img.shields.io/travis/Adezandee/last-release-apm.svg?style=flat
