@@ -1,0 +1,18 @@
+# Logs
+*.log
+
+# Coverage directory
+coverage/
+
+# Dependency directory
+node_modules/
+
+# Sources
+src/
+test/
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc
+.gitignore
+.travis.yml

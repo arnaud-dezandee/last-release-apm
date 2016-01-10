@@ -1,0 +1,57 @@
+{
+  "name": "last-release-apm",
+  "version": "0.0.0-semantic-release",
+  "description": "determine the version of the last release via the apm registry",
+  "author": "Arnaud Dezandee <dezandee.arnaud@gmail.com> (https://github.com/Adezandee)",
+  "keywords": [
+    "apm",
+    "registry",
+    "semantic-release",
+    "version"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Adezandee/last-release-apm.git"
+  },
+  "homepage": "https://github.com/Adezandee/last-release-apm#readme",
+  "bugs": {
+    "url": "https://github.com/Adezandee/last-release-apm/issues"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "prebuild": "rm -rf dist && mkdir dist",
+    "build": "babel -d dist src",
+    "pretest": "eslint .",
+    "test": "mocha --compilers js:babel-register",
+    "coverage": "babel-node ./node_modules/.bin/isparta cover _mocha",
+    "coverage:upload": "cat ./coverage/lcov.info | coveralls",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+  },
+  "dependencies": {
+    "@semantic-release/error": "^1.0.0",
+    "request": "^2.67.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-eslint": "^5.0.0-beta6",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "chai": "^3.4.1",
+    "coveralls": "^2.11.6",
+    "cz-conventional-changelog": "^1.1.5",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^3.1.0",
+    "isparta": "^4.0.0",
+    "mocha": "^2.3.4",
+    "nock": "^5.2.1",
+    "semantic-release": "^4.3.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
