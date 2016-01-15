@@ -9,7 +9,7 @@ import getHead from '../src/head.js';
 
 /**
  * Tests
-*/
+ */
 
 const GITHUB_API = 'https://api.github.com';
 const github = nock(GITHUB_API);
