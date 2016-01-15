@@ -23,17 +23,17 @@ export default function getHead(pack, version, callback) {
   const requestSettings = {
     url: `${GITHUB_API}/repos/${getRepository(pack)}/tags`,
     json: true,
+    headers,
   };
 
   request.get(requestSettings, (error, response, tags = []) => {
     if (error) return callback(error);
 
     if (response.statusCode === 200) {
-      tags.forEach(tag => {
-        if (tag.name === `v${version}`) {
-          return callback(null, tag.commit.sha);
-        }
-      });
+      const match = tags.filter(tag => tag.name === `v${version}`);
+      if (match.length) {
+        return callback(null, match[0].commit.sha);
+      }
     }
 
     return callback(new SemanticReleaseError(
