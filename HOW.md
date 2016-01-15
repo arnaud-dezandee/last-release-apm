@@ -36,14 +36,14 @@ This is what `apm publish` really do:
     In the background, Atom registry will download a tar ball of your project from git based on this tag.
     It will then try to read the package.json to determine the real version you wish to release.
 
-**And here is the catch**, semantically released package doesn't have a "git saved" `package.version`, that's the whole point !
+**And here is the catch**, semantically released package doesn't have a "git saved" `package.version`.
 
 So here is the NPM scripts I'm using to make it work:
 
 ```json
 "scripts": {
-  "git:push": "git commit -am \"Prepare v$npm_package_version release [ci skip]\"",
-  "postgit:push": "git push",
+  "pregit:push": "git commit -am \"Prepare $npm_package_version release\"",
+  "git:push": "git push",
   "apm:publish": "apm publish -t v$npm_package_version",
   "semantic-release": "semantic-release pre && npm run git:push && semantic-release post && npm run apm:publish"
 },
