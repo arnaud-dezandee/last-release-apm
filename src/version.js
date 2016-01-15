@@ -10,15 +10,19 @@ import request from 'request';
  */
 
 const ATOM_REGISTRY = 'https://atom.io';
+const headers = {
+  'User-Agent': 'LastReleaseApm/' + require('../package.json').version,
+};
 
 /**
  * Interface
  */
 
-export default function atomVersion(pkg, callback) {
+export default function atomVersion(pack, callback) {
   const requestSettings = {
-    url: `${ATOM_REGISTRY}/api/packages/${pkg.name}`,
+    url: `${ATOM_REGISTRY}/api/packages/${pack.name}`,
     json: true,
+    headers,
   };
 
   request.get(requestSettings, (error, response, body = {}) => {

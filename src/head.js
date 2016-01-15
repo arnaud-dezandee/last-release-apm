@@ -11,6 +11,9 @@ import getRepository from './package.js';
  */
 
 const GITHUB_API = 'https://api.github.com';
+const headers = {
+  'User-Agent': 'LastReleaseApm/' + require('../package.json').version,
+};
 
 /**
  * Interface
