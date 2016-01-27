@@ -4,15 +4,14 @@
 
 import { expect } from 'chai';
 import nock from 'nock';
+import { GITHUB_API, ATOM_REGISTRY } from '../src/const.js';
 import lastRelease from '../src/index.js';
 
 /**
  * Tests
 */
 
-const GITHUB_API = 'https://api.github.com';
 const github = nock(GITHUB_API);
-const ATOM_REGISTRY = 'https://atom.io';
 const registry = nock(ATOM_REGISTRY);
 
 describe('lastRelease', () => {

@@ -5,13 +5,13 @@
 import { expect } from 'chai';
 import SemanticReleaseError from '@semantic-release/error';
 import nock from 'nock';
+import { ATOM_REGISTRY } from '../src/const.js';
 import atomVersion from '../src/version.js';
 
 /**
  * Tests
  */
 
-const ATOM_REGISTRY = 'https://atom.io';
 const registry = nock(ATOM_REGISTRY);
 
 describe('atomVersion from registry', () => {
