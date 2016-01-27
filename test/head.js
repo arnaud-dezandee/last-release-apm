@@ -5,13 +5,13 @@
 import { expect } from 'chai';
 import SemanticReleaseError from '@semantic-release/error';
 import nock from 'nock';
+import { GITHUB_API } from '../src/const.js';
 import getHead from '../src/head.js';
 
 /**
  * Tests
  */
 
-const GITHUB_API = 'https://api.github.com';
 const github = nock(GITHUB_API);
 
 describe('getHead from github', () => {

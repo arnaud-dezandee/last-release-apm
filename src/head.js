@@ -4,16 +4,8 @@
 
 import SemanticReleaseError from '@semantic-release/error';
 import request from 'request';
+import { GITHUB_API, headers } from './const.js';
 import getRepository from './package.js';
-
-/**
- * Privates
- */
-
-const GITHUB_API = 'https://api.github.com';
-const headers = {
-  'User-Agent': 'LastReleaseApm/' + require('../package.json').version,
-};
 
 /**
  * Interface

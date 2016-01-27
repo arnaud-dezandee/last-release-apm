@@ -4,15 +4,7 @@
 
 import SemanticReleaseError from '@semantic-release/error';
 import request from 'request';
-
-/**
- * Privates
- */
-
-const ATOM_REGISTRY = 'https://atom.io';
-const headers = {
-  'User-Agent': 'LastReleaseApm/' + require('../package.json').version,
-};
+import { ATOM_REGISTRY, headers } from './const.js';
 
 /**
  * Interface
