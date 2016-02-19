@@ -19,7 +19,7 @@ describe('lastRelease', () => {
     registry.get('/api/packages/fast-eslint').reply(200, {
       releases: { latest: '1.2.3' },
     });
-    github.get('/repos/Adezandee/fast-eslint/tags').reply(200, [{
+    github.get('/repos/Adezandee/fast-eslint/tags').query(true).reply(200, [{
       name: 'v1.2.3',
       commit: { sha: 'f9977551c125796199a739f48907eccf71adaca2' },
     }]);
@@ -28,6 +28,9 @@ describe('lastRelease', () => {
       pkg: {
         name: 'fast-eslint',
         repository: 'https://github.com/Adezandee/fast-eslint.git',
+      },
+      options: {
+        githubToken: 'FOO',
       },
     }, (error, release) => {
       expect(error).to.equal(null);

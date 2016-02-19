@@ -3,29 +3,37 @@
  */
 
 import SemanticReleaseError from '@semantic-release/error';
-import request from 'request';
-import { GITHUB_API, headers } from './const.js';
-import getRepository from './package.js';
+import ghParser from 'parse-github-url';
+import GitHubAPI from 'github';
+import { headers } from './const.js';
+
+/**
+ * Privates
+ */
+
+const github = new GitHubAPI({
+  version: '3.0.0',
+  headers,
+});
 
 /**
  * Interface
  */
 
-export default function getHead(pack, version, callback) {
-  const requestSettings = {
-    url: `${GITHUB_API}/repos/${getRepository(pack)}/tags`,
-    json: true,
-    headers,
-  };
+export default function getHead(options, pack, version, callback) {
+  const { owner, name } = ghParser(pack.repository && pack.repository.url || pack.repository);
 
-  request.get(requestSettings, (error, response, tags = []) => {
+  github.authenticate({
+    type: 'oauth',
+    token: options.githubToken,
+  });
+
+  github.repos.getTags({ user: owner, repo: name }, (error, tags = []) => {
     if (error) return callback(error);
 
-    if (response.statusCode === 200) {
-      const match = tags.filter(tag => tag.name === `v${version}`);
-      if (match.length) {
-        return callback(null, match[0].commit.sha);
-      }
+    const match = tags.filter(tag => tag.name === `v${version}`);
+    if (match.length) {
+      return callback(null, match[0].commit.sha);
     }
 
     return callback(new SemanticReleaseError(
