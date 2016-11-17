@@ -51,7 +51,7 @@
     "isparta": "~4.0.0",
     "mocha": "~2.5.3",
     "nock": "~8.0.0",
-    "semantic-release": "~4.3.5"
+    "semantic-release": "~6.3.2"
   },
   "config": {
     "commitizen": {
