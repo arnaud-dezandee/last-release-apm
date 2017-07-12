@@ -24,8 +24,8 @@
   "main": "src/index.js",
   "scripts": {
     "pretest": "eslint .",
-    "test": "mocha",
-    "coverage": "nyc mocha",
+    "test": "nyc mocha",
+    "coverage": "nyc report --reporter=lcov",
     "coverage:upload": "cat ./coverage/lcov.info | coveralls",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
