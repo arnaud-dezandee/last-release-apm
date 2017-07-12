@@ -3,14 +3,13 @@
 
 # Coverage directory
 coverage/
+.nyc_output/
 
 # Dependency directory
 node_modules/
 
 # Sources
-src/
 test/
-.babelrc
 .editorconfig
 .eslintignore
 .eslintrc
