@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 /**
  * Dependencies
  */
@@ -5,8 +6,8 @@
 import { expect } from 'chai';
 import SemanticReleaseError from '@semantic-release/error';
 import nock from 'nock';
-import { GITHUB_API } from '../src/const.js';
-import getHead from '../src/head.js';
+import { GITHUB_API } from '../src/const';
+import getHead from '../src/head';
 
 /**
  * Tests
@@ -18,7 +19,7 @@ const options = {
 };
 
 describe('getHead from github', () => {
-  it('get sha from version', done => {
+  it('get sha from version', (done) => {
     github.get('/repos/test/test/tags').query(true).reply(200, [{
       name: 'v1.1.5',
       commit: { sha: 'f9977551c125796199a739f48907eccf71adaca2' },
@@ -31,7 +32,7 @@ describe('getHead from github', () => {
     });
   });
 
-  it('missing version', done => {
+  it('missing version', (done) => {
     github.get('/repos/test/test/tags').query(true).reply(200, [{
       name: 'hey',
       commit: { sha: 'f9977551c125796199a739f48907eccf71adaca2' },
@@ -44,7 +45,7 @@ describe('getHead from github', () => {
     });
   });
 
-  it('missing package', done => {
+  it('missing package', (done) => {
     github.get('/repos/test/missing/tags').query(true).reply(404, { message: 'Not Found' });
 
     getHead(options, { repository: 'https://github.com/test/missing.git' }, '1.0.0', (error, sha) => {
@@ -54,7 +55,7 @@ describe('getHead from github', () => {
     });
   });
 
-  it('request error', done => {
+  it('request error', (done) => {
     github.get('/repos/test/test/tags').query(true).replyWithError('Error');
 
     getHead(options, { repository: 'https://github.com/test/test.git' }, '1.1.5', (error, sha) => {

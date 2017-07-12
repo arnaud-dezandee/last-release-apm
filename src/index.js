@@ -3,8 +3,8 @@
  */
 
 import debug from 'debug';
-import atomVersion from './version.js';
-import getHead from './head.js';
+import atomVersion from './version';
+import getHead from './head';
 
 /**
  * Dependencies

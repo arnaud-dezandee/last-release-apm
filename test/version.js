@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 /**
  * Dependencies
  */
@@ -5,8 +6,8 @@
 import { expect } from 'chai';
 import SemanticReleaseError from '@semantic-release/error';
 import nock from 'nock';
-import { ATOM_REGISTRY } from '../src/const.js';
-import atomVersion from '../src/version.js';
+import { ATOM_REGISTRY } from '../src/const';
+import atomVersion from '../src/version';
 
 /**
  * Tests
@@ -15,7 +16,7 @@ import atomVersion from '../src/version.js';
 const registry = nock(ATOM_REGISTRY);
 
 describe('atomVersion from registry', () => {
-  it('get last release', done => {
+  it('get last release', (done) => {
     registry.get('/api/packages/present').reply(200, {
       releases: { latest: '1.0.0' },
     });
@@ -27,7 +28,7 @@ describe('atomVersion from registry', () => {
     });
   });
 
-  it('not published', done => {
+  it('not published', (done) => {
     registry.get('/api/packages/missing').reply(404, { message: 'Not Found' });
 
     atomVersion({ name: 'missing' }, (error, version) => {
@@ -37,7 +38,7 @@ describe('atomVersion from registry', () => {
     });
   });
 
-  it('missing no 404', done => {
+  it('missing no 404', (done) => {
     registry.get('/api/packages/missing-no-404').reply(200, { message: 'Not Found' });
 
     atomVersion({ name: 'missing-no-404' }, (error, version) => {
@@ -48,7 +49,7 @@ describe('atomVersion from registry', () => {
     });
   });
 
-  it('missing no body', done => {
+  it('missing no body', (done) => {
     registry.get('/api/packages/missing-no-body').reply(200);
 
     atomVersion({ name: 'missing-no-body' }, (error, version) => {
@@ -59,7 +60,7 @@ describe('atomVersion from registry', () => {
     });
   });
 
-  it('error', done => {
+  it('error', (done) => {
     registry.get('/api/packages/error').replyWithError('Error');
 
     atomVersion({ name: 'error' }, (error, version) => {

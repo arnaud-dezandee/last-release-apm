@@ -4,7 +4,7 @@
 
 import SemanticReleaseError from '@semantic-release/error';
 import request from 'request';
-import { ATOM_REGISTRY, headers } from './const.js';
+import { ATOM_REGISTRY, headers } from './const';
 
 /**
  * Interface
@@ -31,7 +31,7 @@ export default function atomVersion(pack, callback) {
 
     const message = body.message || body.error || body;
     return callback(new SemanticReleaseError(
-      `Requesting package failed: ${JSON.stringify(message)}`
+      `Requesting package failed: ${JSON.stringify(message)}`,
     ));
   });
 }
