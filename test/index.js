@@ -1,11 +1,11 @@
+/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 /**
  * Dependencies
  */
-
-import { expect } from 'chai';
-import nock from 'nock';
-import { GITHUB_API, ATOM_REGISTRY } from '../src/const.js';
-import lastRelease from '../src/index.js';
+const { expect } = require('chai');
+const nock = require('nock');
+const { GITHUB_API, ATOM_REGISTRY } = require('../src/const');
+const lastRelease = require('../src/index');
 
 /**
  * Tests
@@ -15,7 +15,7 @@ const github = nock(GITHUB_API);
 const registry = nock(ATOM_REGISTRY);
 
 describe('lastRelease', () => {
-  it('get fast-eslint release', done => {
+  it('get fast-eslint release', (done) => {
     registry.get('/api/packages/fast-eslint').reply(200, {
       releases: { latest: '1.2.3' },
     });

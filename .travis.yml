@@ -1,7 +1,7 @@
 sudo: false
 language: node_js
 node_js:
-  - "4"
+  - "6"
 
 cache:
   directories:
@@ -15,7 +15,7 @@ notifications:
   email: false
 
 before_install:
-  - npm i -g npm@2
+  - npm i -g npm
 
 before_script:
   - npm prune

@@ -2,16 +2,16 @@
  * Dependencies
  */
 
-import pkg from '../package.json';
+const pkg = require('../package.json');
 
 /**
  * Interface
  */
 
-export const ATOM_REGISTRY = 'https://atom.io';
+module.exports.ATOM_REGISTRY = 'https://atom.io';
 
-export const GITHUB_API = 'https://api.github.com';
+module.exports.GITHUB_API = 'https://api.github.com';
 
-export const headers = {
+module.exports.headers = {
   'User-Agent': `LastReleaseApm/${pkg.version}`,
 };
