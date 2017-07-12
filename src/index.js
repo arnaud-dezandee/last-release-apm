@@ -2,9 +2,9 @@
  * Dependencies
  */
 
-import debug from 'debug';
-import atomVersion from './version';
-import getHead from './head';
+const debug = require('debug');
+const atomVersion = require('./version');
+const getHead = require('./head');
 
 /**
  * Dependencies
@@ -16,7 +16,7 @@ const log = debug('last-release-apm');
  * Interface
  */
 
-export default function lastRelease(pluginConfig, { pkg, options }, callback) {
+module.exports = function lastRelease(pluginConfig, { pkg, options }, callback) {
   log(options);
 
   atomVersion(pkg, (err1, version = null) => {
@@ -28,10 +28,7 @@ export default function lastRelease(pluginConfig, { pkg, options }, callback) {
       log({ gitHead, err2 });
       if (err2) return callback(err2);
 
-      return callback(null, {
-        gitHead,
-        version,
-      });
+      return callback(null, { gitHead, version });
     });
   });
-}
+};

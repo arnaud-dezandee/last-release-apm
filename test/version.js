@@ -2,17 +2,15 @@
 /**
  * Dependencies
  */
-
-import { expect } from 'chai';
-import SemanticReleaseError from '@semantic-release/error';
-import nock from 'nock';
-import { ATOM_REGISTRY } from '../src/const';
-import atomVersion from '../src/version';
+const { expect } = require('chai');
+const SemanticReleaseError = require('@semantic-release/error');
+const nock = require('nock');
+const { ATOM_REGISTRY } = require('../src/const');
+const atomVersion = require('../src/version');
 
 /**
  * Tests
  */
-
 const registry = nock(ATOM_REGISTRY);
 
 describe('atomVersion from registry', () => {

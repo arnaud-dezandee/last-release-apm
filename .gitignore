@@ -3,6 +3,7 @@
 
 # Coverage directory
 coverage/
+.nyc_output/
 
 # Compiled sources
 dist/

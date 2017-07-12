@@ -2,12 +2,11 @@
 /**
  * Dependencies
  */
-
-import { expect } from 'chai';
-import SemanticReleaseError from '@semantic-release/error';
-import nock from 'nock';
-import { GITHUB_API } from '../src/const';
-import getHead from '../src/head';
+const { expect } = require('chai');
+const SemanticReleaseError = require('@semantic-release/error');
+const nock = require('nock');
+const { GITHUB_API } = require('../src/const');
+const getHead = require('../src/head');
 
 /**
  * Tests

@@ -2,15 +2,15 @@
  * Dependencies
  */
 
-import SemanticReleaseError from '@semantic-release/error';
-import request from 'request';
-import { ATOM_REGISTRY, headers } from './const';
+const SemanticReleaseError = require('@semantic-release/error');
+const request = require('request');
+const { ATOM_REGISTRY, headers } = require('./const');
 
 /**
  * Interface
  */
 
-export default function atomVersion(pack, callback) {
+module.exports = function atomVersion(pack, callback) {
   const requestSettings = {
     url: `${ATOM_REGISTRY}/api/packages/${pack.name}`,
     json: true,
@@ -30,8 +30,7 @@ export default function atomVersion(pack, callback) {
     }
 
     const message = body.message || body.error || body;
-    return callback(new SemanticReleaseError(
-      `Requesting package failed: ${JSON.stringify(message)}`,
-    ));
+    const semError = new SemanticReleaseError(`Requesting package failed: ${JSON.stringify(message)}`);
+    return callback(semError);
   });
-}
+};

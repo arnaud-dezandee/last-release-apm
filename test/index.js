@@ -2,11 +2,10 @@
 /**
  * Dependencies
  */
-
-import { expect } from 'chai';
-import nock from 'nock';
-import { GITHUB_API, ATOM_REGISTRY } from '../src/const';
-import lastRelease from '../src/index';
+const { expect } = require('chai');
+const nock = require('nock');
+const { GITHUB_API, ATOM_REGISTRY } = require('../src/const');
+const lastRelease = require('../src/index');
 
 /**
  * Tests
