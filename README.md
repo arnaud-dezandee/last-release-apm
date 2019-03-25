@@ -1,4 +1,13 @@
-# last-release-apm
+# DEPRECATED - last-release-apm
+----
+----
+----
+
+**DEPRECATION NOTICE: This project has been deprecated. See [@semantic-release/apm-config](https://github.com/semantic-release/apm-config).**
+
+----
+----
+----
 
 **fully automated package publishing** with [semantic-release](https://github.com/semantic-release/semantic-release) for [Atom](https://atom.io/) packages.
 
